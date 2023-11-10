@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
-  <p id="os"><b>OS:</b> </p>
+  <!-- <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
@@ -27,7 +27,7 @@
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
+  <p><a href="liff/path/?param=9">Link to Path</a></p> -->
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -42,7 +42,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,12 +75,23 @@
     }
 
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS())
+      document.getElementById("language").append(liff.getLanguage())
+      document.getElementById("version").append(liff.getVersion())
+      document.getElementById("accessToken").append(liff.getAccessToken())
+      document.getElementById("isInClient").append(liff.isInClient())
+      if(liff.isInClient) {
+        document.getElementById("btnLogOut").style.display = "none"
+      } else {
+        document.getElementById("btnMsg").style.display = "none"
+        document.getElementById("btnScanCode").style.display = "none"
+        document.getElementById("btnClose").style.display = "none"
+      }
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      await liff.init({ liffId: "2001568807-WrlLk4bJ" })
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
