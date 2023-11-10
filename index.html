@@ -93,22 +93,24 @@
     }
 
     async function sendMsg() {
-      var vConsole = new VConsole()
-      console.log('sendMsg')
-      console.log(liff.getContext().type)
+    try {
+        console.log('sendMsg');
+        console.log(liff.getContext().type);
 
-      if(liff.getContext().type !== "none") {
-        await liff.sendMessage([
-          {
-            "type": "sticker",
-            "stickerId": 1,
-            "packageId": 1
-          }
-        ])
-        alert("Message sent")
-      }
+        if (liff.getContext().type !== "none") {
+            await liff.sendMessage([
+                {
+                    "type": "sticker",
+                    "stickerId": 1,
+                    "packageId": 1
+                }
+            ]);
+            alert("Message sent");
+        }
+    } catch (error) {
+        console.error('Error sending message: ', error);
     }
-
+}
     function getContext() {
       document.getElementById("type").append(liff.getContext().type)
       document.getElementById("viewType").append(liff.getContext().viewType)
