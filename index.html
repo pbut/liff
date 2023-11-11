@@ -98,12 +98,12 @@
         console.log(liff.getContext().type);
 
         if (liff.getContext().type !== "none") {
-            await liff.sendMessage([
-                // {
-                //     "type": "sticker",
-                //     "stickerId": 1,
-                //     "packageId": 1
-                // }
+            await liff.sendMessages([
+                {
+                    "type": "sticker",
+                    "stickerId": 1,
+                    "packageId": 1
+                },
                 {
                   "type": "text",
                   "text": "ทดสอบการส่งข้อความ ..."
